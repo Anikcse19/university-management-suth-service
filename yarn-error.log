@@ -1,5 +1,5 @@
 Arguments: 
-  /home/anik/.nvm/versions/node/v20.2.0/bin/node /home/anik/.nvm/versions/node/v20.2.0/bin/yarn add husky --dev
+  /home/anik/.nvm/versions/node/v20.2.0/bin/node /home/anik/.nvm/versions/node/v20.2.0/bin/yarn add -D lint-staged
 
 PATH: 
   /home/anik/.nvm/versions/node/v20.2.0/bin:/home/anik/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
@@ -35,11 +35,16 @@ npm manifest:
       "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
       "lint:fix": "eslint --fix",
       "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+      "lint:prettier": "yarn lint:check && yarn prettier:check",
       "start": "ts-node-dev --respawn --transpile-only ./src/server.ts",
       "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "anik",
     "license": "ISC",
+    "lint-staged":{
+  
+      "src/**/*.ts":"yarn lint:prettier"
+    },
     "dependencies": {
       "@typescript-eslint/eslint-plugin": "^6.0.0",
       "@typescript-eslint/parser": "^6.0.0",
@@ -55,6 +60,7 @@ npm manifest:
       "@types/cors": "^2.8.13",
       "@types/express": "^4.17.17",
       "eslint-config-prettier": "^8.8.0",
+      "husky": "^8.0.3",
       "ts-node-dev": "^2.0.0"
     }
   }
@@ -1056,6 +1062,11 @@ Lockfile:
       setprototypeof "1.2.0"
       statuses "2.0.1"
       toidentifier "1.0.1"
+  
+  husky@^8.0.3:
+    version "8.0.3"
+    resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.3.tgz#4936d7212e46d1dea28fef29bb3a108872cd9184"
+    integrity sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==
   
   iconv-lite@0.4.24:
     version "0.4.24"
